@@ -13,14 +13,26 @@ namespace TournamentLib
 
         public Match GetMatch(string teamName1, string teamName2)
         {
-            // TODO: Implement this method
+            foreach(Match mac in matches)
+            {
+                if(mac.FirstOpponent.ToString() == teamName1 && mac.SecondOpponent.ToString() == teamName2)
+                {
+                    return mac;
+                }
+            }            
             return null;
         }
 
         public bool IsMatchesFinished()
         {
-            // TODO: Implement this method
-            return false;
+            foreach(Match mac in matches)
+            {
+                if(mac.Winner == null)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public List<Team> GetWinningTeams()
