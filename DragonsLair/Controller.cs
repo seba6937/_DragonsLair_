@@ -18,6 +18,7 @@ namespace DragonsLair
             List<Team> winningTeams = new List<Team>();
             Round currentRound = null;
             int games = 0;
+            List<Team> loosers = new List<Team>();
             for (int q = 0; q < rounds; q++)
             {
                 Console.Clear();
@@ -48,6 +49,7 @@ namespace DragonsLair
                     else if(q < 1)
                     {
                         winningTeamsAndVictorys.Add(team.ToString(), numVictorys);
+                        loosers = currentRound.GetLosingTeams();
                     }
                 }
                 var standing = from pair in winningTeamsAndVictorys
@@ -61,7 +63,13 @@ namespace DragonsLair
                         games += pair.Value;
                     }
                 }
-
+                Console.WriteLine(" #####                                      ");
+                Console.WriteLine(" #     # ##### # #      #      # #    #  ####");
+                Console.WriteLine(" #         #   # #      #      # ##   # #    #");
+                Console.WriteLine("  #####    #   # #      #      # # #  # #     ");
+                Console.WriteLine("       #   #   # #      #      # #  # # #  ###");
+                Console.WriteLine(" #     #   #   # #      #      # #   ## #    #");
+                Console.WriteLine("  #####    #   # ###### ###### # #    #  #### ");
                 Console.WriteLine("0-----------------------------------------------0");
                 Console.WriteLine("| 	Turnering: " + tournamentName + " 	        |");
                 Console.WriteLine("| 	Spillede runder: " + rounds + "		        |");
@@ -69,7 +77,12 @@ namespace DragonsLair
                 Console.WriteLine("|-------------------------------| VUNDNE KAMPE  |");
                 foreach (KeyValuePair<string, int> pair in standing)
                 {                    
-                    Console.WriteLine("| X. {0}" + "\t\t" + "| {1}" + "\t\t" +"|", pair.Key, pair.Value);                    
+                    Console.WriteLine("| X. {0}" + "\t\t" + "| {1}" + "\t\t" +"|", pair.Key, pair.Value);                 
+                }
+
+                foreach(Team team in loosers)
+                {
+                    Console.WriteLine("| X. {0}" + "\t\t" + "| 0" + "\t\t" + "|",team);
                 }
                 Console.WriteLine("0-----------------------------------------------0\n");
             }             

@@ -18,7 +18,7 @@ namespace TournamentLib
                 new Team("The Spartans"),
                 new Team("The Cretans"),
                 new Team("The Thereans"),
-                new Team("The Coans"),
+                new Team("The Coanies"),
                 new Team("The Cnideans"),
                 new Team("The Megareans"),
                 new Team("The Corinthians"),
@@ -50,7 +50,7 @@ namespace TournamentLib
                 r.AddMatch(match2);
 
                 Match match3 = new Match();
-                match3.FirstOpponent = new Team("The Coans");
+                match3.FirstOpponent = new Team("The Coanies");
                 match3.SecondOpponent = new Team("The Cnideans");
                 match3.Winner = match3.FirstOpponent;
                 r.AddMatch(match3);
@@ -77,7 +77,7 @@ namespace TournamentLib
                 r.AddMatch(match1);
 
                 Match match2 = new Match();
-                match2.FirstOpponent = new Team("The Coans");
+                match2.FirstOpponent = new Team("The Coanies");
                 match2.SecondOpponent = new Team("The Corinthians");
                 match2.Winner = match2.FirstOpponent;
                 r.AddMatch(match2);
@@ -86,14 +86,14 @@ namespace TournamentLib
             {
                 Match match1 = new Match();
                 match1.FirstOpponent = new Team("The Valyrians");
-                match1.SecondOpponent = new Team("The Coans");
+                match1.SecondOpponent = new Team("The Coanies");
                 match1.Winner = match1.SecondOpponent;
                 r.AddMatch(match1);
             }
             else if(idx == 3)
             {
                 Match match1 = new Match();
-                match1.FirstOpponent = new Team("The Coans");
+                match1.FirstOpponent = new Team("The Coanies");
                 match1.SecondOpponent = new Team("The Hardcores");
                 match1.Winner = match1.SecondOpponent;
                 r.AddMatch(match1);
