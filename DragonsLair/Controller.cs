@@ -12,41 +12,44 @@ namespace DragonsLair
         public void ShowScore(string tournamentName)
         {
             Tournament tournament = tournamentRepository.GetTournament(tournamentName);
-            int rounds = tournament.GetNumberOfRounds();
-
-            List<Team> teams = tournament.GetTeams();
+            int rounds = tournament.GetNumberOfRounds();            
+            Dictionary<string, int> winningTeamsAndVictorys = new Dictionary<string, int>();
+            int numVictorys = 0;
+            List<Team> winningTeams = new List<Team>();
             Round currentRound = null;
             for (int q = 0; q < rounds; q++)
             {
                 currentRound = tournament.GetRound(q);
-                
-            }
-            List<Team> winningTeams = currentRound.GetWinningTeams(); //viser kun et hold 
-            String[,] winningTeamsAndVictorys = new String[teams.Count,teams.Count];
-            
-            for (int i = 0; i < rounds; i++)
-            {
-                
-                foreach (Team team in winningTeams)
+                winningTeams = currentRound.GetWinningTeams();
+                numVictorys = 1;
+                if (q >= 1)
                 {
-                    int numTeamVictory = 0;
-                    Round matches = new Round();
-                    List<Match> match = new List<Match>();
-                    match.Add(matches.GetMatch(team.ToString(), teams[i].ToString()));
-                    for(int j = 0; j < match.Count; j++)
+                    if (!winningTeamsAndVictorys.ContainsKey(winningTeams.ToString()))
                     {
-                        if(winningTeams[j].ToString() == team.ToString())
+                        foreach(Team team in winningTeams)
                         {
-                            numTeamVictory += 1;
-                        }
-                        winningTeamsAndVictorys.SetValue(""+ team.ToString() + "-"+ numTeamVictory.ToString() + "", j,j);
-                    }                                        
+                            int moreVictorys = 0;
+                            winningTeamsAndVictorys.TryGetValue(team.ToString(), out moreVictorys);
+                            winningTeamsAndVictorys[team.ToString()] = moreVictorys + 1;
+                        }                        
+                    } 
                 }
-            }
-            for(int l = 0; l < winningTeamsAndVictorys.Length; l++)
-            {
-                Console.WriteLine(winningTeamsAndVictorys[l,l]);
-            }
+                
+                foreach(Team team in winningTeams)
+                {
+                    if(q >= 1)
+                    {
+                        if (winningTeamsAndVictorys.ContainsKey(winningTeams.ToString()))
+                        {
+                            winningTeamsAndVictorys.Add(team.ToString(), numVictorys);
+                        }
+                    }
+                    else if(q < 1)
+                    {
+                        winningTeamsAndVictorys.Add(team.ToString(), numVictorys);
+                    }
+                }                
+            }             
         }
 
         public void ScheduleNewRound(string tournamentName, bool printNewMatches = true)
