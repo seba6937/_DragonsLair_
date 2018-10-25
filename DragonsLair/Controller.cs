@@ -62,16 +62,16 @@ namespace DragonsLair
                     }
                 }
 
-                Console.WriteLine("0----------------------------------------------0");
-                Console.WriteLine("| 	Turnering: " + tournamentName + " 	       |");
-                Console.WriteLine("| 	Spillede runder: " + rounds + "		       |");
-                Console.WriteLine("| 	Spillede kampe: " + games +"		       |");
-                Console.WriteLine("|-------------------------------| VUNDNE KAMPE |");
+                Console.WriteLine("0-----------------------------------------------0");
+                Console.WriteLine("| 	Turnering: " + tournamentName + " 	        |");
+                Console.WriteLine("| 	Spillede runder: " + rounds + "		        |");
+                Console.WriteLine("| 	Spillede kampe: " + games +"		        |");
+                Console.WriteLine("|-------------------------------| VUNDNE KAMPE  |");
                 foreach (KeyValuePair<string, int> pair in standing)
                 {                    
                     Console.WriteLine("| X. {0}" + "\t\t" + "| {1}" + "\t\t" +"|", pair.Key, pair.Value);                    
                 }
-                Console.WriteLine("0----------------------------------------------0\n");
+                Console.WriteLine("0-----------------------------------------------0\n");
             }             
         }
 
