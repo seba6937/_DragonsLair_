@@ -38,10 +38,9 @@ namespace TournamentLib
         public List<Team> GetWinningTeams()
         {
             List<Team> winners = new List<Team>();
-
-            foreach (Match mac in matches)
+            foreach(Match mac in matches)
             {
-                if (mac.Winner != null)
+                if(mac.Winner != null)
                 {
                     winners.Add(mac.Winner);
                 }
@@ -52,14 +51,13 @@ namespace TournamentLib
         public List<Team> GetLosingTeams()
         {
             List<Team> loosers = new List<Team>();
-
             foreach (Match mac in matches)
             {
-                if(mac.Winner == mac.FirstOpponent)
+                if (mac.Winner == mac.FirstOpponent)
                 {
                     loosers.Add(mac.SecondOpponent);
                 }
-                else if (mac.Winner == mac.SecondOpponent)
+                else if(mac.Winner == mac.SecondOpponent)
                 {
                     loosers.Add(mac.FirstOpponent);
                 }
