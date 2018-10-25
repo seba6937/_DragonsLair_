@@ -37,14 +37,34 @@ namespace TournamentLib
 
         public List<Team> GetWinningTeams()
         {
-            // TODO: Implement this method
-            return null;
+            List<Team> winners = new List<Team>();
+
+            foreach (Match mac in matches)
+            {
+                if (mac.Winner != null)
+                {
+                    winners.Add(mac.Winner);
+                }
+            }
+            return winners;
         }
 
         public List<Team> GetLosingTeams()
         {
-            // TODO: Implement this method
-            return null;
+            List<Team> loosers = new List<Team>();
+
+            foreach (Match mac in matches)
+            {
+                if(mac.Winner == mac.FirstOpponent)
+                {
+                    loosers.Add(mac.SecondOpponent);
+                }
+                else if (mac.Winner == mac.SecondOpponent)
+                {
+                    loosers.Add(mac.FirstOpponent);
+                }
+            }
+            return loosers;
         }
     }
 }

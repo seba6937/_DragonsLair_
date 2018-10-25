@@ -11,11 +11,7 @@ namespace DragonsLair
 
         public void ShowScore(string tournamentName)
         {
-            /*
-             * TODO: Calculate for each team how many times they have won
-             * Sort based on number of matches won (descending)
-             */
-            Console.WriteLine("Implement this method!");
+           
         }
 
         public void ScheduleNewRound(string tournamentName, bool printNewMatches = true)
