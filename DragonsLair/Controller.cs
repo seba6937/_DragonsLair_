@@ -19,6 +19,7 @@ namespace DragonsLair
             Round currentRound = null;
             for (int q = 0; q < rounds; q++)
             {
+                Console.Clear();
                 currentRound = tournament.GetRound(q);
                 winningTeams = currentRound.GetWinningTeams();
                 numVictorys = 1;
@@ -33,8 +34,7 @@ namespace DragonsLair
                             winningTeamsAndVictorys[team.ToString()] = moreVictorys + 1;
                         }                        
                     } 
-                }
-                
+                }                
                 foreach(Team team in winningTeams)
                 {
                     if(q >= 1)
@@ -48,6 +48,13 @@ namespace DragonsLair
                     {
                         winningTeamsAndVictorys.Add(team.ToString(), numVictorys);
                     }
+                }
+                var standing = from pair in winningTeamsAndVictorys
+                               orderby pair.Value descending
+                               select pair;
+                foreach (KeyValuePair<string, int> pair in standing)
+                {                    
+                    Console.WriteLine("{0}: {1}", pair.Key, pair.Value);                    
                 }                
             }             
         }
