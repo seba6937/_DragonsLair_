@@ -17,6 +17,7 @@ namespace DragonsLair
             int numVictorys = 0;
             List<Team> winningTeams = new List<Team>();
             Round currentRound = null;
+            int games = 0;
             for (int q = 0; q < rounds; q++)
             {
                 Console.Clear();
@@ -52,10 +53,26 @@ namespace DragonsLair
                 var standing = from pair in winningTeamsAndVictorys
                                orderby pair.Value descending
                                select pair;
+
+                if (q == rounds - 1)
+                {
+                    foreach (KeyValuePair<string, int> pair in standing)
+                    {
+                        games += pair.Value;
+                    }
+                    Console.WriteLine(games);
+                }
+
+                Console.WriteLine("0----------------------------------------------0");
+                Console.WriteLine("| 	Turnering: " + tournamentName + " 	       |");
+                Console.WriteLine("| 	Spillede runder: " + rounds + "		       |");
+                Console.WriteLine("| 	Spillede kampe: " + games +"		       |");
+                Console.WriteLine("|-------------------------------| VUNDNE KAMPE |");
                 foreach (KeyValuePair<string, int> pair in standing)
                 {                    
-                    Console.WriteLine("{0}: {1}", pair.Key, pair.Value);                    
-                }                
+                    Console.WriteLine("| X. {0}" + "     | {1}          |", pair.Key, pair.Value);                    
+                }
+                Console.WriteLine("0----------------------------------------------0\n");
             }             
         }
 
