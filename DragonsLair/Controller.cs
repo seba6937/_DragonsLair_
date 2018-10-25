@@ -52,6 +52,8 @@ namespace DragonsLair
                 var standing = from pair in winningTeamsAndVictorys
                                orderby pair.Value descending
                                select pair;
+
+                
                 foreach (KeyValuePair<string, int> pair in standing)
                 {                    
                     Console.WriteLine("{0}: {1}", pair.Key, pair.Value);                    
