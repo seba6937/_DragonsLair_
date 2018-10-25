@@ -60,7 +60,6 @@ namespace DragonsLair
                     {
                         games += pair.Value;
                     }
-                    Console.WriteLine(games);
                 }
 
                 Console.WriteLine("0----------------------------------------------0");
