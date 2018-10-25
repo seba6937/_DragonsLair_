@@ -21,7 +21,9 @@ namespace TournamentLib
                 new Team("The Coans"),
                 new Team("The Cnideans"),
                 new Team("The Megareans"),
-                new Team("The Corinthians")
+                new Team("The Corinthians"),
+                new Team("The Hardcores"),
+                new Team("The Mongols")
             });
         }
 
@@ -59,6 +61,12 @@ namespace TournamentLib
                 match4.Winner = match4.SecondOpponent;
                 r.AddMatch(match4);
 
+                Match match5 = new Match();
+                match5.FirstOpponent = new Team("The Hardcores");
+                match5.SecondOpponent = new Team("The Mongols");
+                match5.Winner = match5.FirstOpponent;
+                r.AddMatch(match5);
+
             }
             else if (idx == 1)
             {
@@ -79,6 +87,14 @@ namespace TournamentLib
                 Match match1 = new Match();
                 match1.FirstOpponent = new Team("The Valyrians");
                 match1.SecondOpponent = new Team("The Coans");
+                match1.Winner = match1.SecondOpponent;
+                r.AddMatch(match1);
+            }
+            else if(idx == 3)
+            {
+                Match match1 = new Match();
+                match1.FirstOpponent = new Team("The Coans");
+                match1.SecondOpponent = new Team("The Hardcores");
                 match1.Winner = match1.SecondOpponent;
                 r.AddMatch(match1);
             }
