@@ -104,12 +104,17 @@ namespace DragonsLair
             Random random = new Random();
             int randomIndex = 0;
 
-            while(team.Count > 0)
+
+            foreach(Team teams in team)
             {
-                randomIndex = random.Next(0, team.Count);
-                randomList.Add(team[randomIndex]);
-                team.RemoveAt(randomIndex);
+                randomList.Add(teams);
             }
+            //while(team.Count > 0)
+            //{
+            //    //randomIndex = random.Next(0, team.Count);
+            //    //randomList.Add(team[randomIndex]);
+            //    //team.RemoveAt(randomIndex);
+            //}
             return randomList;
         }
 
@@ -155,7 +160,7 @@ namespace DragonsLair
                     {
                         if (numberOfRounds > 0)
                         {
-                            oldFreeRider = lastRound.FreeRider;
+                            oldFreeRider = lastRound.GetFreerRider(); 
                             newFreeRider = scrambled[0];
                         } else
                         {
@@ -163,17 +168,19 @@ namespace DragonsLair
                             newFreeRider = scrambled[0];
                         }
 
-                        for(int x = 0; newFreeRider != oldFreeRider; x++)
+                        int x = 0;
+                        while(newFreeRider == oldFreeRider)
                         {
                             newFreeRider = scrambled[x];
+                            x++;
                         }
 
-                        lastRound.FreeRider = newFreeRider;
+                        newRound.SetFreeRider(newFreeRider);
                         scrambled.Remove(newFreeRider);
 
                     }
 
-                    for (int i = 1; i < scrambled.Count; i += 2)
+                    for (int i = 0; i < scrambled.Count; i += 2)
                     {
                         Match match = new Match();
                         match.FirstOpponent = scrambled[i];

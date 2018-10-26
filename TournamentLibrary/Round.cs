@@ -5,10 +5,17 @@ namespace TournamentLib
     public class Round
     {
 
-        public Team FreeRider
+        public Team FreeRider { get; set; }
+
+
+        public Team GetFreerRider()
         {
-            get { return FreeRider; }
-            set {; }
+            return FreeRider;
+        }
+
+        public Team SetFreeRider(Team freeRider)
+        {
+           return FreeRider = freeRider;
         }
 
         private List<Match> matches = new List<Match>();
