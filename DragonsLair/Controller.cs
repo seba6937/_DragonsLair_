@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TournamentLib;
+using static System.Math;
 
 namespace DragonsLair
 {
@@ -97,9 +98,105 @@ namespace DragonsLair
             return tournamentRepository;
         }
 
+        public List<Team> ScrambleTeamsRandomly(List<Team> team)
+        {
+            List<Team> randomList = new List<Team>(); 
+            Random random = new Random();
+            int randomIndex = 0;
+
+            while(team.Count > 0)
+            {
+                randomIndex = random.Next(0, team.Count);
+                randomList.Add(team[randomIndex]);
+                team.RemoveAt(randomIndex);
+            }
+            return randomList;
+        }
+
         public void ScheduleNewRound(string tournamentName, bool printNewMatches = true)
         {
-            // Do not implement this method
+            Tournament tournament = tournamentRepository.GetTournament(tournamentName);
+            int numberOfRounds = tournament.GetNumberOfRounds();
+            Round lastRound;
+            bool isRoundFinished = false;
+            List<Team> teams = new List<Team>();
+            Team oldFreeRider, newFreeRider;
+            if (numberOfRounds == 0)
+            {
+                lastRound = null;
+                isRoundFinished = true;
+            } else
+            {
+                lastRound = tournament.GetRound(numberOfRounds-1);
+                isRoundFinished = lastRound.IsMatchesFinished();
+            }
+
+            if (isRoundFinished)
+            {
+                if (lastRound == null)
+                {
+                    teams = tournament.GetTeams();
+                }
+                else
+                {
+                    teams = lastRound.GetWinningTeams();
+                    if (lastRound.FreeRider != null)
+                    {
+                        teams.Add(lastRound.FreeRider);
+                    }
+                }
+
+                if (teams.Count >= 2)
+                {
+                    List<Team> scrambled = ScrambleTeamsRandomly(teams);
+                    Round newRound = new Round();
+
+                    if (scrambled.Count %2 != 0)
+                    {
+                        if (numberOfRounds > 0)
+                        {
+                            oldFreeRider = lastRound.FreeRider;
+                            newFreeRider = scrambled[0];
+                        } else
+                        {
+                            oldFreeRider = null;
+                            newFreeRider = scrambled[0];
+                        }
+
+                        for(int x = 0; newFreeRider != oldFreeRider; x++)
+                        {
+                            newFreeRider = scrambled[x];
+                        }
+
+                        lastRound.FreeRider = newFreeRider;
+                        scrambled.Remove(newFreeRider);
+
+                    }
+
+                    for (int i = 1; i < scrambled.Count; i += 2)
+                    {
+                        Match match = new Match();
+                        match.FirstOpponent = scrambled[i];
+                        match.SecondOpponent = scrambled[i + 1];
+                        newRound.AddMatch(match);
+
+                    }
+
+                    tournament.AddRound(newRound);
+
+                    Console.WriteLine("First Opponent is: " );
+
+                } else
+                {
+                    throw new Exception("Tournament is finished");
+                }
+            }
+            else
+            {
+                throw new Exception("lastRound is not finished");
+            }
+
+            
         }
 
         public void SaveMatch(string tournamentName, int roundNumber, string team1, string team2, string winningTeam)
