@@ -45,6 +45,7 @@ namespace TournamentLib
                 if(mac.FirstOpponent.ToString() == teamName1 && mac.SecondOpponent.ToString() == teamName2)
                 {
                     return mac;
+
                 }
             }            
             return null;
