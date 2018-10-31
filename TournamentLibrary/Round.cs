@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TournamentLib
 {
@@ -25,6 +26,18 @@ namespace TournamentLib
             matches.Add(m);
         }
 
+        public Match GetMatch(string team)
+        {
+            foreach (Match mac in matches)
+            {
+                if (mac.FirstOpponent.ToString().Equals(team) || mac.SecondOpponent.ToString().Equals(team))
+                {
+                    return mac;
+                }
+            }
+            return null;
+        }
+
         public Match GetMatch(string teamName1, string teamName2)
         {
             foreach(Match mac in matches)
@@ -36,6 +49,8 @@ namespace TournamentLib
             }            
             return null;
         }
+
+        
 
         public bool IsMatchesFinished()
         {
@@ -79,6 +94,6 @@ namespace TournamentLib
             return loosers;
         }
 
-
+       
     }
 }
