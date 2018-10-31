@@ -179,10 +179,10 @@ namespace DragonsLair
                         scrambled.Remove(newFreeRider);
 
                     }
-                    Match match = new Match();
+
                     for (int i = 0; i < scrambled.Count; i += 2)
                     {
-                        
+                        Match match = new Match();
                         match.FirstOpponent = scrambled[i];
                         match.SecondOpponent = scrambled[i + 1];
                         newRound.AddMatch(match);
@@ -190,8 +190,8 @@ namespace DragonsLair
                     }
 
                     tournament.AddRound(newRound);
-                    
-                    Console.WriteLine("{0} - {1}", match.FirstOpponent, match.SecondOpponent);
+
+                    Console.WriteLine("First Opponent is: " );
 
                 } else
                 {
@@ -211,6 +211,7 @@ namespace DragonsLair
             Tournament tournament = tournamentRepository.GetTournament(tournamentName);
             Round round = tournament.GetRound(roundNumber);
             Match match = round.GetMatch(winningTeam);
+
             if (match != null && match.Winner == null)
             {
                 Team winner = tournament.GetTeam(winningTeam);
@@ -221,6 +222,19 @@ namespace DragonsLair
             {
                 throw new Exception("Match not found");
             }
+        }
+        public void CreateTournament(string name, List<string> teamlist)
+        {
+            Tournament tournamentName = new Tournament(name);
+            List<Team> teams = new List<Team>();
+            foreach (string teamName in teamlist)
+            {
+                Team team = new Team(teamName);
+                teams.Add(team);
+            }
+            Console.Clear();
+            Console.WriteLine("Teams have been added.");
+            Console.WriteLine("");
         }
     }
 }
