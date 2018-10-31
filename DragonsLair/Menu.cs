@@ -80,5 +80,6 @@ namespace DragonsLair
             Console.Clear();
             control.SaveMatch(tournamentName, round, winner);
         }
+
     }
 }

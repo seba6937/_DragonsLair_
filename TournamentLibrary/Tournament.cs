@@ -19,7 +19,6 @@ namespace TournamentLib
             return teams;
         }
 
-
         public Team GetTeam(string teamName)
         {
             foreach (Team team in teams)
@@ -36,6 +35,7 @@ namespace TournamentLib
         {
             teams.Add(team);
         }
+
 
         public int GetNumberOfRounds()
         {
