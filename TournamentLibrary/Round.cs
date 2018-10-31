@@ -25,6 +25,18 @@ namespace TournamentLib
             matches.Add(m);
         }
 
+        public Match GetMatch(string team)
+        {
+            foreach (Match match in matches)
+            {
+                if (match.FirstOpponent.ToString().Equals(team) || match.SecondOpponent.ToString().Equals(team))
+                {
+                    return match;
+                }
+            }
+            return null;
+        }
+
         public Match GetMatch(string teamName1, string teamName2)
         {
             foreach(Match mac in matches)
@@ -36,6 +48,8 @@ namespace TournamentLib
             }            
             return null;
         }
+
+
 
         public bool IsMatchesFinished()
         {
