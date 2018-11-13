@@ -49,5 +49,16 @@
     <Compile Include="Tournament.cs" />
     <Compile Include="TournamentRepo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="MatchDB.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RoundDB.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TournamentDB.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

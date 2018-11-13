@@ -89,6 +89,7 @@ namespace DragonsLair
         {
             Console.Write("Angiv navn på turnering: ");
             string tournamentName = Console.ReadLine();
+            control.GetTournamentRepository().CreateTournament(tournamentName);
             Console.Clear();
         }
 

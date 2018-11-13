@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 
 namespace TournamentLib
 {
@@ -7,6 +8,7 @@ namespace TournamentLib
         private string newTour = "";
         private Tournament newTournament;
         private List<Tournament> tournaments = new List<Tournament>();
+        string path = @"D:\datamatiker\_DragonsLair_\TournamentLibrary\TournamentDB.txt";
 
         public Tournament GetTournament(string name)
         {
@@ -24,8 +26,20 @@ namespace TournamentLib
         {
             if (name != null)
             {
+                string line = "";
+                int counter = 1;
+                StreamReader file = new StreamReader(path);
+                while ((line = file.ReadLine())!= null)
+                {
+                    counter++;
+                }
+                file.Close();
                 newTour = name;
                 newTournament = new Tournament(newTour);
+                TextWriter tw = new StreamWriter(path);
+                tw.WriteLine("{0};{1},", counter,newTournament.Name);
+                tw.Close();
+                
                 return newTournament;
             }
             return null;
