@@ -95,42 +95,8 @@ namespace TournamentLib
             }
             return loosers;
         }
-        string path = @"D:\datamatiker\_DragonsLair_\TournamentLibrary\RoundDB.txt";
-        string tourPath = @"D:\datamatiker\_DragonsLair_\TournamentLibrary\TournamentDB.txt";
-        string[] newR;
-        Round newRound = new Round();
-        public Round CreateRound(string tournamentName)
-        {
-            if (tournamentName != null)
-            {
-                string line = "";
-                int counter = 1;
-                StreamReader file = new StreamReader(path);
-                while ((line = file.ReadLine()) != null)
-                {
-                    counter++;
-                }
-                file.Close();
-                StreamReader tourFile = new StreamReader(tourPath);
-                string tourLine = "";
-                while ((tourLine = tourFile.ReadLine()) != null)
-                {
-                    newR = tourLine.Split(',');
-                }
-                for (int i = 0; i < newR.Length; i++)
-                {
-                    string tourName = newR[i].Substring(';');
-                    if (tourName == tournamentName)
-                    {
-                        newRound = new Round();
-                        TextWriter tw = new StreamWriter(path, true);
-                        tw.WriteLine("{0};{1},", counter, tournamentName);
-                        tw.Close();
-                        return newRound;
-                    }
-                }                
-            }
-            return null;
-        }
+        
+
+
     }
 }
