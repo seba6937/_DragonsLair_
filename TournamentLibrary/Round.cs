@@ -128,14 +128,9 @@ namespace TournamentLib
                         tw.Close();
                         return newRound;
                     }
-                }
-                
-
-                
+                }                
             }
             return null;
         }
-
-
     }
 }
