@@ -36,7 +36,7 @@ namespace TournamentLib
                 file.Close();
                 newTour = name;
                 newTournament = new Tournament(newTour);
-                TextWriter tw = new StreamWriter(path);
+                TextWriter tw = new StreamWriter(path, true);
                 tw.WriteLine("{0};{1},", counter,newTournament.Name);
                 tw.Close();
                 
