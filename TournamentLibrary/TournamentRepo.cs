@@ -9,7 +9,7 @@ namespace TournamentLib
         private string newTour = "";
         private Tournament newTournament;
         private List<Tournament> tournaments = new List<Tournament>();
-        string path = @"C:\Users\kaspe\Source\Repos\_DragonsLair_\TournamentLibrary\TournamentDB.txt";
+        string path = Path.GetFullPath("TournamentDB.txt"); //Gives the path to the TournamentDB file.
 
         public Tournament GetTournament(string name)
         {
@@ -68,8 +68,8 @@ namespace TournamentLib
             return null;
         }
 
-        string path2 = @"D:\datamatiker\_DragonsLair_\TournamentLibrary\RoundDB.txt";
-        string tourPath = @"D:\datamatiker\_DragonsLair_\TournamentLibrary\TournamentDB.txt";
+        string path2 = Path.GetFullPath("RoundDB.txt");
+        string tourPath = Path.GetFullPath("TournamentDB.txt");
        List<string> newR = new List<string>();
         Round newRound = new Round();
         public Round CreateRound(string tournamentName)
