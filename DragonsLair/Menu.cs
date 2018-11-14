@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace DragonsLair
 {
     public class Menu
     {
         private Controller control = new Controller();
-        private List<string> teams = new List<string>();
+        
         public void Show()
         {
             bool running = true;
@@ -46,7 +45,7 @@ namespace DragonsLair
             Console.WriteLine("1. Præsenter turneringsstilling");
             Console.WriteLine("2. Planlæg runde i turnering");
             Console.WriteLine("3. Registrér afviklet kamp");
-            Console.WriteLine("4. Skab en turnering");
+            Console.WriteLine("4. Opret Turnering");
             Console.WriteLine("");
             Console.WriteLine("0. Exit");
         }
@@ -69,9 +68,14 @@ namespace DragonsLair
         private void ScheduleNewRound()
         {
             Console.Write("Angiv navn på turnering: ");
+            control.GetTournamentRepository().GetTournaments();
             string tournamentName = Console.ReadLine();
             Console.Clear();
+          
             control.ScheduleNewRound(tournamentName);
+            control.GetTournamentRepository().CreateRound(tournamentName);
+
+            
         }
 
         private void SaveMatch()
@@ -85,35 +89,14 @@ namespace DragonsLair
             Console.Clear();
             control.SaveMatch(tournamentName, round, winner);
         }
+
         private void CreateTournament()
         {
-            Console.WriteLine("Angiv navn på turnering: ");
+            Console.Write("Angiv navn på turnering: ");
             string tournamentName = Console.ReadLine();
-            Console.WriteLine("Angiv hold i turnering: ");
-            string Input;
-            bool done = false;
-            while (done == false)
-            {
-                Input = Console.ReadLine();
-                if (Input == "")
-                {
-                    if (teams.Count < 2)
-                    {
-                        Console.WriteLine("Not enough teams!");
-                        Console.WriteLine("Please add more teams: ");
-                    }
-                    else
-                    {
-                        control.CreateTournament(tournamentName, teams);
-                        done = true;
-                    }
-                }
-                else
-                {
-                    teams.Add(Input);
-                    Console.WriteLine("Angiv flere: ");
-                }
-            }
+            control.GetTournamentRepository().CreateTournament(tournamentName);
+            Console.Clear();
         }
+
     }
 }
