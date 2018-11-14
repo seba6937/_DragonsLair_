@@ -68,9 +68,14 @@ namespace DragonsLair
         private void ScheduleNewRound()
         {
             Console.Write("Angiv navn på turnering: ");
+            control.GetTournamentRepository().GetTournaments();
             string tournamentName = Console.ReadLine();
             Console.Clear();
+          
             control.ScheduleNewRound(tournamentName);
+            control.GetTournamentRepository().CreateRound(tournamentName);
+
+            
         }
 
         private void SaveMatch()
