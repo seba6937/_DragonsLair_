@@ -9,7 +9,7 @@ namespace TournamentLib
         private string newTour = "";
         private Tournament newTournament;
         private List<Tournament> tournaments = new List<Tournament>();
-        string path = @"C:\Users\kaspe\Source\Repos\_DragonsLair_\TournamentLibrary\TournamentDB.txt";
+        string path = @"D:\datamatiker\_DragonsLair_\TournamentLibrary\TournamentDB.txt";
 
         public Tournament GetTournament(string name)
         {
@@ -45,7 +45,7 @@ namespace TournamentLib
             
         }
 
-        public Tournament CreateTournament(string name)
+        public Tournament CreateTournament(string name) //a good idea would be to check if the tournament already exists
         {
             if (name != null)
             {
@@ -62,8 +62,11 @@ namespace TournamentLib
                 TextWriter tw = new StreamWriter(path, true);
                 tw.WriteLine("{0};{1},", counter,newTournament.Name);
                 tw.Close();
-                
                 return newTournament;
+            }
+            else if (name == null)
+            {                
+                throw new Exception("Name can not be empty");                
             }
             return null;
         }
