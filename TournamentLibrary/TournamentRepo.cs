@@ -110,5 +110,53 @@ namespace TournamentLib
             }
             return null;
         }
+
+        public string returnTournament(int index)
+        {
+            List<string> temp2 = new List<string>();
+            StreamReader sr = new StreamReader(path);
+            string line = "";
+            string lineToArray = "";
+            List<string> listOfTeams = new List<string>();
+
+            while ((line = sr.ReadLine()) != null)
+            {
+                lineToArray = line;
+                temp2.Add(lineToArray);
+            }
+            for (int i = 0; i < temp2.Count; i++)
+            {
+                string subString = temp2[i].Remove(temp2[i].Length - 1);
+
+                string tourName = subString.Substring(subString.LastIndexOf(';') + 1);
+                listOfTeams.Add(tourName);
+            }
+            return listOfTeams[index];
+        }
+
+        public List<string> returnListOfTournaments()
+        {
+            List<string> temp2 = new List<string>();
+            StreamReader sr = new StreamReader(path);
+            string line = "";
+            string lineToArray = "";
+            List<string> listOfTeams = new List<string>();
+
+            while ((line = sr.ReadLine()) != null)
+            {
+                lineToArray = line;
+                temp2.Add(lineToArray);
+            }
+            for (int i = 0; i < temp2.Count; i++)
+            {
+                string subString = temp2[i].Remove(temp2[i].Length - 1);
+
+                string tourName = subString.Substring(subString.LastIndexOf(';') + 1);
+                listOfTeams.Add(tourName);
+            }
+            return listOfTeams;
+        }
+
+
     }
 }

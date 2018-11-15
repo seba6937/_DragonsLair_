@@ -69,6 +69,23 @@ namespace DragonsLair
         {
             Console.Write("Angiv navn på turnering: ");
             control.GetTournamentRepository().GetTournaments();
+            int choice = int.Parse(GetUserChoice());
+
+                for (int i = 0; i <= control.GetTournamentRepository().returnListOfTournaments().Count; i++)
+                {
+                    if (choice == i)
+                {
+                    string tournament = control.GetTournamentRepository().returnTournament(i);
+                    Console.WriteLine("Turneringen valgt er: " + tournament);
+                } else if(choice != i)
+                {
+                    Console.WriteLine("Ugyldigt valg.");
+                    Console.ReadLine();
+                }        
+        }
+                
+
+               
             string tournamentName = Console.ReadLine();
             Console.Clear();
           
