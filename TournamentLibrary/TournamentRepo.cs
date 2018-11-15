@@ -9,7 +9,7 @@ namespace TournamentLib
         private string newTour = "";
         private Tournament newTournament;
         private List<Tournament> tournaments = new List<Tournament>();
-        string path = @"D:\datamatiker\_DragonsLair_\TournamentLibrary\TournamentDB.txt";
+        string path = Path.GetFullPath("TournamentDB.txt"); //Gives the path to the TournamentDB file.
 
         public Tournament GetTournament(string name)
         {
@@ -45,7 +45,7 @@ namespace TournamentLib
             
         }
 
-        public Tournament CreateTournament(string name) //a good idea would be to check if the tournament already exists
+        public Tournament CreateTournament(string name)
         {
             if (name != null)
             {
@@ -62,17 +62,14 @@ namespace TournamentLib
                 TextWriter tw = new StreamWriter(path, true);
                 tw.WriteLine("{0};{1},", counter,newTournament.Name);
                 tw.Close();
+                
                 return newTournament;
-            }
-            else if (name == null)
-            {                
-                throw new Exception("Name can not be empty");                
             }
             return null;
         }
 
-        string path2 = @"D:\datamatiker\_DragonsLair_\TournamentLibrary\RoundDB.txt";
-        string tourPath = @"D:\datamatiker\_DragonsLair_\TournamentLibrary\TournamentDB.txt";
+        string path2 = Path.GetFullPath("RoundDB.txt");
+        string tourPath = Path.GetFullPath("TournamentDB.txt");
        List<string> newR = new List<string>();
         Round newRound = new Round();
         public Round CreateRound(string tournamentName)

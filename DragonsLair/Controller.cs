@@ -223,5 +223,18 @@ namespace DragonsLair
                 throw new Exception("Match not found");
             }
         }
+        public void CreateTournament(string name, List<string> teamlist)
+        {
+            Tournament tournamentName = new Tournament(name);
+            List<Team> teams = new List<Team>();
+            foreach (string teamName in teamlist)
+            {
+                Team team = new Team(teamName);
+                teams.Add(team);
+            }
+            Console.Clear();
+            Console.WriteLine("Teams have been added.");
+            Console.WriteLine("");
+        }
     }
 }
