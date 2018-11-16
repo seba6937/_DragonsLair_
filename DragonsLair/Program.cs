@@ -16,7 +16,7 @@ namespace DragonsLair
 
         void Run()
         {
-            Menu menu = new Menu();
+            Menu menu = new Menu();            
             menu.Show();
         }
     }

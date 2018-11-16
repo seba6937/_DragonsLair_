@@ -36,10 +36,12 @@ namespace DragonsLair
                         break;
                 }
             } while (running);
+            
         }
 
         private void ShowMenu()
         {
+
             Console.WriteLine("Dragons Lair");
             Console.WriteLine();
             Console.WriteLine("1. Præsenter turneringsstilling");

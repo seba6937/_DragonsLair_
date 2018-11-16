@@ -7,7 +7,8 @@ namespace TournamentLib
     public class TournamentRepo
     {
         private string newTour = "";
-        private Tournament newTournament;
+        Tournament TEST = new Tournament("Test");
+        private Tournament newTournament;        
         private List<Tournament> tournaments = new List<Tournament>();
         string path = Path.GetFullPath("TournamentDB.txt"); //Gives the path to the TournamentDB file.
 
@@ -18,11 +19,11 @@ namespace TournamentLib
                 if (name == tournament.Name)
                 {
                     return tournament;
-                }                
+                }
             }
             return null;
         }
-      
+
         public void GetTournaments()
         {
             List<string> temp2 = new List<string>();
@@ -156,7 +157,5 @@ namespace TournamentLib
             }
             return listOfTeams;
         }
-
-
     }
 }
