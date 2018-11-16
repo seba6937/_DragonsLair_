@@ -22,7 +22,7 @@ namespace DragonsLair
                         ShowScore();
                         break;
                     case "2":
-                        ScheduleNewRound();
+                        ShowTournaments();
                         break;
                     case "3":
                         SaveMatch();
@@ -43,7 +43,7 @@ namespace DragonsLair
             Console.WriteLine("Dragons Lair");
             Console.WriteLine();
             Console.WriteLine("1. Præsenter turneringsstilling");
-            Console.WriteLine("2. Planlæg runde i turnering");
+            Console.WriteLine("2. Vis Turneringer");
             Console.WriteLine("3. Registrér afviklet kamp");
             Console.WriteLine("4. Opret Turnering");
             Console.WriteLine("");
@@ -65,13 +65,13 @@ namespace DragonsLair
             control.ShowScore(tournamentName);
         }
 
-        private void ScheduleNewRound()
+        private void ShowTournaments()
         {
-            Console.Write("Angiv navn på turnering: ");
+
             control.GetTournamentRepository().GetTournaments();
             int choice = int.Parse(GetUserChoice());
 
-                for (int i = 0; i <= control.GetTournamentRepository().returnListOfTournaments().Count; i++)
+                for (int i = 1; i <= control.GetTournamentRepository().returnListOfTournaments().Count; i++)
                 {
                     if (choice == i)
                 {

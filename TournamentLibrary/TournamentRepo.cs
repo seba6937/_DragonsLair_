@@ -40,7 +40,7 @@ namespace TournamentLib
                 string subString = temp2[i].Remove(temp2[i].Length - 1); 
 
                 string tourName = subString.Substring(subString.LastIndexOf(';')+1);
-                Console.WriteLine("\n"+"\n" + (i+1) + ". " + tourName + "\n");
+                Console.WriteLine("\n"+ (i+1) + ". " + tourName + "\n");
             }
             
         }
