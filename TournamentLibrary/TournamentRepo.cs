@@ -65,7 +65,9 @@ namespace TournamentLib
                 
                 return newTournament;
             }
+            Console.WriteLine("Name can not be empty");
             return null;
+          
         }
 
         string path2 = Path.GetFullPath("RoundDB.txt");

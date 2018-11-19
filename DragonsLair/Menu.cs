@@ -45,7 +45,7 @@ namespace DragonsLair
             Console.WriteLine("1. Præsenter turneringsstilling");
             Console.WriteLine("2. Vis Turneringer");
             Console.WriteLine("3. Registrér afviklet kamp");
-            Console.WriteLine("4. Opret Turnering");
+            Console.WriteLine("4. Opret tom Turnering");
             Console.WriteLine("");
             Console.WriteLine("0. Exit");
         }
